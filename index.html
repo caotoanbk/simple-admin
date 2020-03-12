@@ -1,0 +1,414 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="vi" />
+	<base href="http://hallavina.vn/" target="_self" />
+	<link rel="stylesheet" type="text/css" href="css/gridview/styles.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/3408d1b7/pager.css" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+	<script type="text/javascript" src="/assets/bb88cf13/jquery.ba-bbq.js"></script>
+	<title>QUẢN TRỊ HỆ THỐNG WEBSITE - News</title>
+
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap-theme.min.css" />
+	<script type="text/javascript" src="css/bootstrap/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/layout.css" />
+	<link type="text/css" rel="stylesheet" href="css/normalize.css" />
+
+	<script type="text/javascript" src="css/upload/jquery.uploadifive.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/upload/uploadifive.css" />
+
+	<script type="text/javascript" language="javascript" src="css/ckeditor/ckeditor.js" ></script>
+	<script type="text/javascript" language="javascript" src="css/js/jquery.backend_vina.js" ></script>
+	<script type="text/javascript" language="javascript" src="css/js/jquery.addimg.js" ></script>
+	<script type="text/javascript" language="javascript" src="css/js/jquery.tags.js"></script>
+	<script type="text/javascript" language="javascript" src="css/js/jquery.property.js"></script>
+	<script type="text/javascript" language="javascript" src="css/js/jquery-sortable.js"></script>
+
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('body').backend_vina({
+			url_orderMenu: "/menu/updateOrd",
+		});
+
+		/*==============THÊM ẢNH================*/
+		$('#list_images').addimg({
+			url_changeDefault: "/attachment/changeDefault",
+			url_delete: "/attachment/updateDelete",
+		});
+
+		//xử lý tags cho sản phẩm
+		$('#txt_tag').tags({
+			url_loadTags: "/tags/LoadTags",
+			url_addTags: "/tagsProduct/create",
+			url_removeTags: "/tagsProduct/Remove",
+			url_newTags: "/tags/Add",
+			num_character: 3
+		});
+
+		//xử lý tags cho sản phẩm
+		$('#txt_tagnews').tags({
+			url_loadTags: "/tags/LoadTags",
+			url_addTags: "/tagsNews/create",
+			url_removeTags: "/tagsNews/Remove",
+			url_newTags: "/tags/AddNews",
+			num_character: 3
+		});
+
+		//phần thuộc tính cho sản phẩm
+		$('.property_tab').property({
+			url_create: "/propertyProduct/create",
+			url_update: "/propertyProduct/update",
+			url_delete: "/propertyProduct/delete"
+		});
+
+	});
+	</script>
+	
+</head>
+
+<body>
+
+	<!-- Begin wrapper -->
+	<div class="wrapper expand-menu">
+		
+		<!-- Begin navbar -->
+		<nav class="navbar navbar-default navbar-admin">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			    </button>
+				<a class="navbar-brand" href="#"><i class="fa fa-leaf"></i> Bảng quản trị</a>
+			</div>
+
+			<ul class="nav vinaweb-nav">
+				<li class="homepage-menu"><a target="_blank" href="/">
+				<span class="visible-xs"><i class="fa fa-globe"></i> W</span>
+				<span class="hidden-xs"><i class="fa fa-globe"></i> Xem website</span>
+				</a></li>
+				<li class="dropdown user-menu">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+						<i class="fa fa-user"></i> <span class="hidden-xs">Halla</span> <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu menu-right">
+			            <li><a href="/user/changePassword/1"><i class="fa fa-key"></i> Đổi mật khẩu</a></li>
+			            <li><a href="/user/updateInfo/1"><i class="fa fa-info-circle"></i> Thông tin tài khoản</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="/site/logout"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+			            <li class="arrow"></li>
+			        </ul>
+				</li>
+			</ul>
+
+		</nav>
+		<!-- End navbar -->
+
+
+		<!-- Begin container-vina-->
+		<div class="container-vina">
+			
+
+			<!-- Begin sidebar-vina -->
+			<div class="sidebar-vina">
+
+				<div class="fastlink-vina">
+					<a href="/user/index"  class="green-vina btn-vina hover-vina"><i class="fa fa-users"></i></a>
+					<a href="/buyer/index"  class="blue-vina btn-vina hover-vina"><i class="fa fa-comments-o"></i></a>
+					<a href="/contact/index"  class="yellow-vina btn-vina hover-vina"><i class="fa fa-envelope-o"></i></a>
+					<a href="/configure/index"  class="red-vina btn-vina hover-vina"><i class="fa fa-cogs"></i></a>
+				</div>
+
+				<ul class="mainmenu-vina">
+					<li><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+					<li>
+						<a href="/product/index"><i class="fa fa-file-powerpoint-o"></i> <span>Sản phẩm</span> <b class="fa fa-angle-right hover-vina"></b></a>
+						<ul>
+							<li><a href="/product/index">Quản lý sản phẩm</a></li>
+							<li><a href="/cat/index">Danh mục</a></li>
+
+							<li><a href="/brand/index">Thương hiệu</a></li>
+							<li><a href="/property/index">Quản lý thông số</a></li>
+							<li><a href="http://photo.vinaweb.vn/">Chỉnh sửa ảnh</a></li>
+						</ul>
+					</li>
+
+					<li class="active">
+						<a href="/news/index"><i class="fa fa-file-text-o"></i> <span>Nội dung</span> <b class="fa fa-angle-right hover-vina"></b></a>
+						<ul>
+							<li class="active"><a href="/news/index">Bài viết</a></li>
+							<li><a href="/catNews/index">Danh mục</a></li>
+							<li><a href="/page/index">Trang</a></li>
+						</ul>
+					</li>
+					<li><a href="/buyer/index"><i class="fa fa-cart-plus fa-lg"></i> <span>Quản lý đơn hàng</span></a></li>
+					<li><a href="/partner/index"><i class="fa fa-bullhorn"></i> <span>Quản lý banner</span></a></li>
+					<li><a href="/menu/index"><i class="fa fa-th-list"></i> <span>Quản lý menu</span></a></li>
+					<li><a href="/link/index"><i class="fa fa-tags"></i> <span>Quản lý liên kết</span></a></li>
+					<li><a href="/slide/index"><i class="fa fa-file-image-o"></i> <span>Slide ảnh</span></a></li>
+					<li>
+						<a href="/picture/index"><i class="fa fa-image"></i> <span>Thư viện ảnh</span> <b class="fa fa-angle-right hover-vina"></b></a>
+						<ul>
+							<li><a href="/picture/index">Hình ảnh</a></li>
+							<li><a href="/album/index">Album</a></li>
+						</ul>
+					</li>
+					<li><a href="/video/index"><i class="fa fa-video-camera"></i> <span>Video</span></a></li>
+					<li><a href="/comment/index"><i class="fa fa-comments-o"></i> <span>Khách hàng nói</span></a></li>
+					<li><a href="/tags/index"><i class="fa fa-hashtag"></i> <span>Quản lý tags</span></a></li>
+					<li><a href="/office/index"><i class="fa fa-map-marker"></i> <span>Quản lý văn phòng</span></a></li>
+					<li>
+						<a href="/contact/index"><i class="fa fa-gears"></i> <span>Cấu hình</span> <b class="fa fa-angle-right hover-vina"></b></a>
+						<ul>
+							<li><a href="/configure/index">Cấu hình website</a></li>
+							<li><a href="/contact/index">Cấu hình liên hệ</a></li>
+							<li><a href="/seo/index">Cấu hình SEO</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="/roles/index"><i class="fa fa-check-square-o"></i> <span>Quản lý phân quyền</span> <b class="fa fa-angle-right hover-vina"></b></a>
+						<ul>
+							<li><a href="/roles/index">Vai trò</a></li>
+							<li><a href="/task/index">Quyền</a></li>
+						</ul>
+					</li>
+					<li><a href="/languages/index"><i class="fa fa-language"></i> <span>Quản lý ngôn ngữ</span></a></li>
+					<li><a href="/user/index"><i class="fa fa-user"></i> <span>Tài khoản</span></a></li>
+
+				</ul>
+
+				<div class="sidecoll-vina"><a><i class="fa fa-angle-double-left"></i></a></div>
+			</div>
+			<!-- Begin sidebar-vina -->
+
+			<!-- Begin contentbox-vina -->
+			<div class="contentbox-vina left-190">
+			
+				<div class="breadcrumbs-vina">
+					<ul class="breadcrumb">
+						<li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+						<li class="active">Quản lý tin tức</li>					</ul>
+
+											<p class="lang-vina">
+							<a class="active" href="/site/setLangAdmin/1"><img width="20" height="15" src="images/languages/5974vietnam.png" alt="Tiếng Việt" /></a><a class="" href="/site/setLangAdmin/2"><img width="20" height="15" src="images/languages/71unit-kingdom.png" alt="Tiếng Anh" /></a>						</p>
+										</div>
+
+				<div class="container-fluid content-vina">
+							<div class="row headerbox-vina">
+		<div class="col-xs-6 titlebox-vina"><h1>Quản lý tin tức</h1></div>
+		<div class="col-xs-6 taskbox-vina">
+			<ul>
+				<li><a class="btn-default-vina blue-vina" href="/news/create"><i class="fa fa-plus"></i> Tạo mới</a></li>
+				<li class="_delete_all"><a class="btn-default-vina red-vina" href="#"><i class="fa fa-remove"></i> Xóa</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div>
+		<div class="separator"></div>
+		<form class="_form_delete_all" action="/news/remove" method="POST">			<div class="tbl-responsive grid-view" id="news-grid">
+<div class="summary">Hiển thị 1-8 của 8 kết quả.</div>
+<table class="items">
+<thead>
+<tr>
+<th class="checkbox-column" id="selectedIds"><input type="checkbox" value="1" name="selectedIds_all" id="selectedIds_all" /></th><th id="news-grid_c1"><a class="sort-link" href="/news/index?News_sort=image">Ảnh</a></th><th id="news-grid_c2"><a class="sort-link" href="/news/index?News_sort=title">Tiêu đề</a></th><th id="news-grid_c3"><a class="sort-link" href="/news/index?News_sort=cat_id">Danh mục</a></th><th id="news-grid_c4"><a class="sort-link" href="/news/index?News_sort=home">Trang chủ</a></th><th id="news-grid_c5"><a class="sort-link" href="/news/index?News_sort=active">Hiển thị</a></th><th class="button-column" id="news-grid_c6">Sửa</th><th class="button-column" id="news-grid_c7">Xóa</th></tr>
+<tr class="filters">
+<td>&nbsp;</td><td><input name="News[image]" type="text" maxlength="200" /></td><td><input name="News[title]" type="text" maxlength="200" /></td><td><select name="News[cat_id]">
+<option value=""></option>
+<option value="19">|-Liên hệ</option>
+<option value="18">|-Giấy chứng nhận</option>
+<option value="17">|-Thiết bị và máy móc</option>
+<option value="16">|-Sản phẩm</option>
+<option value="15">|-Giới thiệu</option>
+<option value="14">|-Đối tác</option>
+</select></td><td><select name="News[home]">
+<option value=""></option>
+<option value="0">Không</option>
+<option value="1">Có</option>
+</select></td><td><select name="News[active]">
+<option value=""></option>
+<option value="0">Không</option>
+<option value="1">Có</option>
+</select></td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="width: 30px; text-align: center;"><input value="22" id="selectedIds_0" type="checkbox" name="selectedIds[]" /></td><td style="width: 55px; text-align: center;"><img width="50" height="35" src="/images/news/1159z591553996264_10ad68402ec1eb11c930d64008e4c1fb.jpg" alt="Giới thiệu về chúng tôi" /></td><td>Giới thiệu về chúng tôi</td><td style="text-transform:capitalize; width: 140px;"><select class="ddl_catid" id="22" name="">
+<option value="">Vui lòng chọn...</option>
+<option value="19">|-Liên hệ</option>
+<option value="18">|-Giấy chứng nhận</option>
+<option value="17">|-Thiết bị và máy móc</option>
+<option value="16">|-Sản phẩm</option>
+<option value="15">|-Giới thiệu</option>
+<option value="14" selected="selected">|-Đối tác</option>
+</select></td><td style="text-align: center; width: 65px;"><input id="22" class="chk_home" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 50px;;"><input id="22" class="chk_active" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 40px;;"><a class="update" title="Cập nhật" href="/news/update/22"><img src="/css/gridview/update.png" alt="Cập nhật" /></a></td><td style="text-align: center; width: 40px;;"><a class="delete" title="Xóa" href="/news/delete/22"><img src="/css/gridview/delete.png" alt="Xóa" /></a></td></tr>
+<tr class="even">
+<td style="width: 30px; text-align: center;"><input value="18" id="selectedIds_1" type="checkbox" name="selectedIds[]" /></td><td style="width: 55px; text-align: center;"><img width="50" height="35" src="/images/news/3916t277577.jpg" alt="LG Việt Nam ra mắt website 2.0 với nhiều tiện ích mới" /></td><td>LG Việt Nam ra mắt website 2.0 với nhiều tiện ích mới</td><td style="text-transform:capitalize; width: 140px;"><select class="ddl_catid" id="18" name="">
+<option value="">Vui lòng chọn...</option>
+<option value="19">|-Liên hệ</option>
+<option value="18" selected="selected">|-Giấy chứng nhận</option>
+<option value="17">|-Thiết bị và máy móc</option>
+<option value="16">|-Sản phẩm</option>
+<option value="15">|-Giới thiệu</option>
+<option value="14">|-Đối tác</option>
+</select></td><td style="text-align: center; width: 65px;"><input id="18" class="chk_home" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 50px;;"><input id="18" class="chk_active" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 40px;;"><a class="update" title="Cập nhật" href="/news/update/18"><img src="/css/gridview/update.png" alt="Cập nhật" /></a></td><td style="text-align: center; width: 40px;;"><a class="delete" title="Xóa" href="/news/delete/18"><img src="/css/gridview/delete.png" alt="Xóa" /></a></td></tr>
+<tr class="odd">
+<td style="width: 30px; text-align: center;"><input value="17" id="selectedIds_2" type="checkbox" name="selectedIds[]" /></td><td style="width: 55px; text-align: center;"><img width="50" height="35" src="/images/news/5593may-giat-lg_258_2017-1.jpg" alt="LG chính thức ra mắt máy giặt lồng đôi đầu tiên tại Việt Nam" /></td><td>LG chính thức ra mắt máy giặt lồng đôi đầu tiên tại Việt Nam</td><td style="text-transform:capitalize; width: 140px;"><select class="ddl_catid" id="17" name="">
+<option value="">Vui lòng chọn...</option>
+<option value="19">|-Liên hệ</option>
+<option value="18" selected="selected">|-Giấy chứng nhận</option>
+<option value="17">|-Thiết bị và máy móc</option>
+<option value="16">|-Sản phẩm</option>
+<option value="15">|-Giới thiệu</option>
+<option value="14">|-Đối tác</option>
+</select></td><td style="text-align: center; width: 65px;"><input id="17" class="chk_home" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 50px;;"><input id="17" class="chk_active" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 40px;;"><a class="update" title="Cập nhật" href="/news/update/17"><img src="/css/gridview/update.png" alt="Cập nhật" /></a></td><td style="text-align: center; width: 40px;;"><a class="delete" title="Xóa" href="/news/delete/17"><img src="/css/gridview/delete.png" alt="Xóa" /></a></td></tr>
+<tr class="even">
+<td style="width: 30px; text-align: center;"><input value="16" id="selectedIds_3" type="checkbox" name="selectedIds[]" /></td><td style="width: 55px; text-align: center;"><img width="50" height="35" src="/images/news/6727maxresdefault.jpg" alt="LG G4 quyết tranh miếng bánh thị phần cao cấp ở VN" /></td><td>LG G4 quyết tranh miếng bánh thị phần cao cấp ở VN</td><td style="text-transform:capitalize; width: 140px;"><select class="ddl_catid" id="16" name="">
+<option value="">Vui lòng chọn...</option>
+<option value="19">|-Liên hệ</option>
+<option value="18" selected="selected">|-Giấy chứng nhận</option>
+<option value="17">|-Thiết bị và máy móc</option>
+<option value="16">|-Sản phẩm</option>
+<option value="15">|-Giới thiệu</option>
+<option value="14">|-Đối tác</option>
+</select></td><td style="text-align: center; width: 65px;"><input id="16" class="chk_home" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 50px;;"><input id="16" class="chk_active" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 40px;;"><a class="update" title="Cập nhật" href="/news/update/16"><img src="/css/gridview/update.png" alt="Cập nhật" /></a></td><td style="text-align: center; width: 40px;;"><a class="delete" title="Xóa" href="/news/delete/16"><img src="/css/gridview/delete.png" alt="Xóa" /></a></td></tr>
+<tr class="odd">
+<td style="width: 30px; text-align: center;"><input value="15" id="selectedIds_4" type="checkbox" name="selectedIds[]" /></td><td style="width: 55px; text-align: center;"><img width="50" height="35" src="/images/news/25935408ngu-dan-philiphin-tim-duong.jpg" alt="Bảng giá xe ô tô hiện có tại Việt Nam, cập nhật tháng 3/2016 lần 2" /></td><td>Bảng giá xe ô tô hiện có tại Việt Nam, cập nhật tháng 3/2016 lần 2</td><td style="text-transform:capitalize; width: 140px;"><select class="ddl_catid" id="15" name="">
+<option value="">Vui lòng chọn...</option>
+<option value="19">|-Liên hệ</option>
+<option value="18">|-Giấy chứng nhận</option>
+<option value="17">|-Thiết bị và máy móc</option>
+<option value="16">|-Sản phẩm</option>
+<option value="15">|-Giới thiệu</option>
+<option value="14">|-Đối tác</option>
+</select></td><td style="text-align: center; width: 65px;"><input id="15" class="chk_home" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 50px;;"><input id="15" class="chk_active" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 40px;;"><a class="update" title="Cập nhật" href="/news/update/15"><img src="/css/gridview/update.png" alt="Cập nhật" /></a></td><td style="text-align: center; width: 40px;;"><a class="delete" title="Xóa" href="/news/delete/15"><img src="/css/gridview/delete.png" alt="Xóa" /></a></td></tr>
+<tr class="even">
+<td style="width: 30px; text-align: center;"><input value="13" id="selectedIds_5" type="checkbox" name="selectedIds[]" /></td><td style="width: 55px; text-align: center;"><img width="50" height="35" src="/images/news/5408ngu-dan-philiphin-tim-duong.jpg" alt="Bảng giá xe ô tô hiện có tại Việt Nam, cập nhật tháng 3/2016" /></td><td>Bảng giá xe ô tô hiện có tại Việt Nam, cập nhật tháng 3/2016</td><td style="text-transform:capitalize; width: 140px;"><select class="ddl_catid" id="13" name="">
+<option value="">Vui lòng chọn...</option>
+<option value="19">|-Liên hệ</option>
+<option value="18">|-Giấy chứng nhận</option>
+<option value="17">|-Thiết bị và máy móc</option>
+<option value="16">|-Sản phẩm</option>
+<option value="15">|-Giới thiệu</option>
+<option value="14">|-Đối tác</option>
+</select></td><td style="text-align: center; width: 65px;"><input id="13" class="chk_home" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 50px;;"><input id="13" class="chk_active" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 40px;;"><a class="update" title="Cập nhật" href="/news/update/13"><img src="/css/gridview/update.png" alt="Cập nhật" /></a></td><td style="text-align: center; width: 40px;;"><a class="delete" title="Xóa" href="/news/delete/13"><img src="/css/gridview/delete.png" alt="Xóa" /></a></td></tr>
+<tr class="odd">
+<td style="width: 30px; text-align: center;"><input value="12" id="selectedIds_6" type="checkbox" name="selectedIds[]" /></td><td style="width: 55px; text-align: center;"><img width="50" height="35" src="/images/news/3033vnp-maymac1111-1432540695523.JPG" alt="Thị trường may mặc nội địa, vì sao “người ngay sợ kẻ gian”?" /></td><td>Thị trường may mặc nội địa, vì sao “người ngay sợ kẻ gian”?</td><td style="text-transform:capitalize; width: 140px;"><select class="ddl_catid" id="12" name="">
+<option value="">Vui lòng chọn...</option>
+<option value="19">|-Liên hệ</option>
+<option value="18">|-Giấy chứng nhận</option>
+<option value="17">|-Thiết bị và máy móc</option>
+<option value="16">|-Sản phẩm</option>
+<option value="15">|-Giới thiệu</option>
+<option value="14">|-Đối tác</option>
+</select></td><td style="text-align: center; width: 65px;"><input id="12" class="chk_home" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 50px;;"><input id="12" class="chk_active" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 40px;;"><a class="update" title="Cập nhật" href="/news/update/12"><img src="/css/gridview/update.png" alt="Cập nhật" /></a></td><td style="text-align: center; width: 40px;;"><a class="delete" title="Xóa" href="/news/delete/12"><img src="/css/gridview/delete.png" alt="Xóa" /></a></td></tr>
+<tr class="even">
+<td style="width: 30px; text-align: center;"><input value="11" id="selectedIds_7" type="checkbox" name="selectedIds[]" /></td><td style="width: 55px; text-align: center;"><img width="50" height="35" src="/images/news/1796may-1432289485142.jpg" alt="Lợi nhuận của 6 doanh nghiệp dệt may niêm yết tăng 21% so với quý 1/2014" /></td><td>Lợi nhuận của 6 doanh nghiệp dệt may niêm yết tăng 21% so với quý 1/2014</td><td style="text-transform:capitalize; width: 140px;"><select class="ddl_catid" id="11" name="">
+<option value="">Vui lòng chọn...</option>
+<option value="19">|-Liên hệ</option>
+<option value="18">|-Giấy chứng nhận</option>
+<option value="17">|-Thiết bị và máy móc</option>
+<option value="16">|-Sản phẩm</option>
+<option value="15">|-Giới thiệu</option>
+<option value="14">|-Đối tác</option>
+</select></td><td style="text-align: center; width: 65px;"><input id="11" class="chk_home" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 50px;;"><input id="11" class="chk_active" checked="checked" type="checkbox" value="1" name="" /></td><td style="text-align: center; width: 40px;;"><a class="update" title="Cập nhật" href="/news/update/11"><img src="/css/gridview/update.png" alt="Cập nhật" /></a></td><td style="text-align: center; width: 40px;;"><a class="delete" title="Xóa" href="/news/delete/11"><img src="/css/gridview/delete.png" alt="Xóa" /></a></td></tr>
+</tbody>
+</table>
+<div class="keys" style="display:none" title="/news/index"><span>22</span><span>18</span><span>17</span><span>16</span><span>15</span><span>13</span><span>12</span><span>11</span></div>
+</div>		</form>	</div>				</div>
+			</div>
+			<!-- End content-vina -->
+
+
+		</div>
+		<!-- End container-vina -->
+
+		<!-- Begin footerbox-vina -->
+		<div class="footerbox-vina left-190">
+			<div class="footer-vina">
+				<div>
+					<p>Copyright © 2016 - Thiết kế website và phát triển bởi <a href="http://vinaweb.vn/" target="_blank">Vinaweb</a> - 
+						<a href="https://www.google.com/partners/#a_profile;idtf=2560624288;qury=vinaweb" target="_blank">Google Partner</a> - 
+						<a href="https://www.facebook.com/Vinawebhp/" target="_blank"><i class="fa fa-facebook"></i></a>
+						<a href="https://plus.google.com/+VinawebVnhp" target="_blank"><i class="fa fa-google-plus"></i></a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- End footerbox-vina -->
+
+	</div>
+	<!-- End wrapper -->
+
+
+<script type="text/javascript" src="/assets/7dec6cc1/gridview/jquery.yiigridview.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+jQuery(function($) {
+jQuery(document).on('click','#selectedIds_all',function() {
+	var checked=this.checked;
+	jQuery("input[name='selectedIds\[\]']:enabled").each(function() {this.checked=checked;});
+});
+jQuery(document).on('click', "input[name='selectedIds\[\]']", function() {
+	jQuery('#selectedIds_all').prop('checked', jQuery("input[name='selectedIds\[\]']").length==jQuery("input[name='selectedIds\[\]']:checked").length);
+});
+jQuery(document).on('click','#news-grid a.delete',function() {
+	if(!confirm('Bạn có chắc là muốn xóa?')) return false;
+	var th = this,
+		afterDelete = function(){};
+	jQuery('#news-grid').yiiGridView('update', {
+		type: 'POST',
+		url: jQuery(this).attr('href'),
+		success: function(data) {
+			jQuery('#news-grid').yiiGridView('update');
+			afterDelete(th, true, data);
+		},
+		error: function(XHR) {
+			return afterDelete(th, false, XHR);
+		}
+	});
+	return false;
+});
+jQuery('#news-grid').yiiGridView({'ajaxUpdate':['news-grid'],'ajaxVar':'ajax','pagerClass':'pager','loadingClass':'grid-view-loading','filterClass':'filters','tableClass':'items','selectableRows':100,'enableHistory':false,'updateSelector':'{page}, {sort}','filterSelector':'{filter}','pageVar':'News_page'});
+
+			$(".contentbox-vina .content-vina").on("change", "td .chk_active", function() {
+				$.post(
+					"/news/UpdateActive",
+					{record_id: $(this).attr("id"),update_value: $(this).val()},
+					function(data) {}
+				);
+			});
+				
+
+			$(".contentbox-vina .content-vina").on("change", "td .chk_home", function() {
+				$.post(
+					"/news/UpdateHome",
+					{record_id: $(this).attr("id"),update_value: $(this).val()},
+					function(data) {}
+				);
+			});
+				
+
+			$(".contentbox-vina .content-vina").on("change", "td .ddl_catid", function() {
+				$.post(
+					"/news/UpdateCatId",
+					{record_id: $(this).attr("id"),update_value: $(this).val()},
+					function(data) {}
+				);
+			});
+				
+});
+/*]]>*/
+</script>
+</body>
+</html>
